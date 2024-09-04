@@ -79,69 +79,60 @@ class PoseDetector:
         validations = []
         try:
             if None not in detected_points:
-                validations.append(self.validate_point(detected_points[0], detected_points[12]))  # Nariz a hombro derecho
-                validations.append(self.validate_point(detected_points[0], detected_points[9]))  # Nariz a muñeca izquierda
-                validations.append(self.validate_point(detected_points[0], detected_points[11]))  # Nariz a hombro izquierdo
-                validations.append(self.validate_point(detected_points[0], detected_points[8]))  # Nariz a muñeca derecha
+                validations.append(self.validate_point(detected_points[0], detected_points[12]))
+                validations.append(self.validate_point(detected_points[0], detected_points[9]))
+                validations.append(self.validate_point(detected_points[0], detected_points[11]))
+                validations.append(self.validate_point(detected_points[0], detected_points[8]))
 
-                # Hombro derecho a otras partes
-                validations.append(self.validate_point(detected_points[12], detected_points[9]))  # Hombro derecho a muñeca izquierda
-                validations.append(self.validate_point(detected_points[12], detected_points[15]))  # Hombro derecho a codo derecho
-                validations.append(self.validate_point(detected_points[12], detected_points[18]))  # Hombro derecho a rodilla derecha
-                validations.append(self.validate_point(detected_points[12], detected_points[16]))  # Hombro derecho a muñeca izquierda
+                validations.append(self.validate_point(detected_points[12], detected_points[9]))
+                validations.append(self.validate_point(detected_points[12], detected_points[15]))
+                validations.append(self.validate_point(detected_points[12], detected_points[18]))
+                validations.append(self.validate_point(detected_points[12], detected_points[16]))
 
-                # Muñeca izquierda a otras partes
-                validations.append(self.validate_point(detected_points[9], detected_points[15]))  # Muñeca izquierda a codo izquierdo
-                validations.append(self.validate_point(detected_points[9], detected_points[14]))  # Muñeca izquierda a codo derecho
-                validations.append(self.validate_point(detected_points[9], detected_points[18]))  # Muñeca izquierda a rodilla izquierda
-                validations.append(self.validate_point(detected_points[9], detected_points[17]))  # Muñeca izquierda a rodilla derecha
+                validations.append(self.validate_point(detected_points[9], detected_points[15]))
+                validations.append(self.validate_point(detected_points[9], detected_points[14]))
+                validations.append(self.validate_point(detected_points[9], detected_points[18]))
+                validations.append(self.validate_point(detected_points[9], detected_points[17]))
 
-                # Rodilla derecha y hombros
-                validations.append(self.validate_point(detected_points[14], detected_points[17]))  # Rodilla derecha a codo izquierdo
-                validations.append(self.validate_point(detected_points[14], detected_points[12]))  # Codo derecho a hombro derecho
-                validations.append(self.validate_point(detected_points[14], detected_points[18]))  # Codo derecho a rodilla izquierda
-                validations.append(self.validate_point(detected_points[14], detected_points[15]))  # Codo derecho a muñeca izquierda
+                validations.append(self.validate_point(detected_points[14], detected_points[17]))
+                validations.append(self.validate_point(detected_points[14], detected_points[12]))
+                validations.append(self.validate_point(detected_points[14], detected_points[18]))
+                validations.append(self.validate_point(detected_points[14], detected_points[15]))
 
-                # Piernas y pies
-                validations.append(self.validate_point(detected_points[17], detected_points[18]))  # Rodilla izquierda a rodilla derecha
-                validations.append(self.validate_point(detected_points[17], detected_points[15]))  # Rodilla izquierda a muñeca izquierda
-                validations.append(self.validate_point(detected_points[17], detected_points[12]))  # Rodilla izquierda a hombro derecho
-                validations.append(self.validate_point(detected_points[17], detected_points[19]))  # Rodilla izquierda a tobillo izquierdo
+                validations.append(self.validate_point(detected_points[17], detected_points[18]))
+                validations.append(self.validate_point(detected_points[17], detected_points[15]))
+                validations.append(self.validate_point(detected_points[17], detected_points[12]))
+                validations.append(self.validate_point(detected_points[17], detected_points[19]))
 
-                # Muñeca derecha a otras partes
-                validations.append(self.validate_point(detected_points[19], detected_points[16]))  # Muñeca derecha a codo izquierdo
-                validations.append(self.validate_point(detected_points[19], detected_points[9]))  # Muñeca derecha a muñeca izquierda
-                validations.append(self.validate_point(detected_points[19], detected_points[12]))  # Muñeca derecha a hombro derecho
-                validations.append(self.validate_point(detected_points[19], detected_points[15]))  # Muñeca derecha a muñeca izquierda
+                validations.append(self.validate_point(detected_points[19], detected_points[16]))
+                validations.append(self.validate_point(detected_points[19], detected_points[9]))
+                validations.append(self.validate_point(detected_points[19], detected_points[12]))
+                validations.append(self.validate_point(detected_points[19], detected_points[15]))
 
-                # Validaciones adicionales de piernas
-                validations.append(self.validate_point(detected_points[16], detected_points[0]))  # Rodilla izquierda a cabeza
-                validations.append(self.validate_point(detected_points[16], detected_points[15]))  # Rodilla izquierda a muñeca derecha
-                validations.append(self.validate_point(detected_points[16], detected_points[18]))  # Rodilla izquierda a rodilla derecha
-                validations.append(self.validate_point(detected_points[16], detected_points[19]))  # Rodilla izquierda a tobillo derecho
+                validations.append(self.validate_point(detected_points[16], detected_points[0]))
+                validations.append(self.validate_point(detected_points[16], detected_points[15]))
+                validations.append(self.validate_point(detected_points[16], detected_points[18]))
+                validations.append(self.validate_point(detected_points[16], detected_points[19]))
 
-                # Validaciones adicionales de codo y muñeca
-                validations.append(self.validate_point(detected_points[8], detected_points[12]))  # Codo izquierdo a hombro derecho
-                validations.append(self.validate_point(detected_points[8], detected_points[9]))  # Codo izquierdo a muñeca izquierda
-                validations.append(self.validate_point(detected_points[8], detected_points[11]))  # Codo izquierdo a hombro izquierdo
-                validations.append(self.validate_point(detected_points[8], detected_points[14]))  # Codo izquierdo a codo derecho
+                validations.append(self.validate_point(detected_points[8], detected_points[12]))
+                validations.append(self.validate_point(detected_points[8], detected_points[9]))
+                validations.append(self.validate_point(detected_points[8], detected_points[11]))
+                validations.append(self.validate_point(detected_points[8], detected_points[14]))
 
-                # Hombro izquierdo con otros puntos
-                validations.append(self.validate_point(detected_points[11], detected_points[12]))  # Hombro izquierdo a hombro derecho
-                validations.append(self.validate_point(detected_points[11], detected_points[9]))  # Hombro izquierdo a muñeca izquierda
-                validations.append(self.validate_point(detected_points[11], detected_points[17]))  # Hombro izquierdo a rodilla izquierda
-                validations.append(self.validate_point(detected_points[11], detected_points[14]))  # Hombro izquierdo a codo derecho
+                validations.append(self.validate_point(detected_points[11], detected_points[12]))
+                validations.append(self.validate_point(detected_points[11], detected_points[9]))
+                validations.append(self.validate_point(detected_points[11], detected_points[17]))
+                validations.append(self.validate_point(detected_points[11], detected_points[14]))
 
-                # Validaciones finales entre piernas y pies
-                validations.append(self.validate_point(detected_points[13], detected_points[9]))  # Cadera izquierda a muñeca izquierda
-                validations.append(self.validate_point(detected_points[13], detected_points[8]))  # Cadera izquierda a codo derecho
-                validations.append(self.validate_point(detected_points[13], detected_points[15]))  # Cadera izquierda a rodilla izquierda
-                validations.append(self.validate_point(detected_points[13], detected_points[16]))  # Cadera izquierda a rodilla derecha
+                validations.append(self.validate_point(detected_points[13], detected_points[9]))
+                validations.append(self.validate_point(detected_points[13], detected_points[8]))
+                validations.append(self.validate_point(detected_points[13], detected_points[15]))
+                validations.append(self.validate_point(detected_points[13], detected_points[16]))
 
-                validations.append(self.validate_point(detected_points[13], detected_points[12]))  # Cadera izquierda a hombro derecho
-                validations.append(self.validate_point(detected_points[13], detected_points[11]))  # Cadera izquierda a hombro izquierdo
-                validations.append(self.validate_point(detected_points[13], detected_points[18]))  # Cadera izquierda a rodilla izquierda
-                validations.append(self.validate_point(detected_points[13], detected_points[19]))  # Cadera izquierda a tobillo derecho
+                validations.append(self.validate_point(detected_points[13], detected_points[12]))
+                validations.append(self.validate_point(detected_points[13], detected_points[11]))
+                validations.append(self.validate_point(detected_points[13], detected_points[18]))
+                validations.append(self.validate_point(detected_points[13], detected_points[19]))
         except Exception as e:
             print(f"Error generando validaciones: {e}")
             return []

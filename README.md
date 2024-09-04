@@ -157,7 +157,3 @@ This project is licensed under the MIT License.
 ## Contributing
 
 Feel free to submit issues or pull requests for improvements!
-
----
-
-This README contains everything a user would need to understand and utilize the `pose_detection` library, from installation to dataset setup and usage examples.
